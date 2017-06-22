@@ -1,0 +1,12 @@
+---
+applications:
+ - path: .
+   instances: 1  
+   domain: mybluemix.net
+   name: advisor
+   host: advisor-skeleton
+   random-route: false
+   memory: 512M
+   disk_quota: 512M
+   buildpack: python_buildpack
+   
