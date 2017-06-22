@@ -24,3 +24,10 @@ Folder structure:
 ```
 
 Not all done yet.
+
+Using cloudfoundry to push to bluemix:
+- set api to correct region
+- ensure correct working directory
+- push application to bluemix
+
+
