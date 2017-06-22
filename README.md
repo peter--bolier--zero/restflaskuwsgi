@@ -1,13 +1,14 @@
 
 
 
-- todo add text.
+# TODO finish this text thingy
 
-Folder structure
+Folder structure:
 
+```
 /
   manifest.yml     - for deployment on bluemix
-  Procfile         - process bluemix will initiate (we want to run uwsgi to serve our flask application)
+  Procfile         - process bluemix will initiate (uwsgi to serve flask)
   requirements.txt - python libraries to install, used by pip
   server.ini       - initialisation for uwsgi
   
@@ -19,4 +20,7 @@ Folder structure
   index.html       - default page
   
 /test
-  testapi.py       - simpel local test.
+  testapi.py       - simpel local test
+```
+
+Not all done yet.
