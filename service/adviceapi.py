@@ -141,16 +141,17 @@ api.add_resource(TripAdviceCharge, '/api/V0.1/trip/advice/charge') # no paramete
 def shutdown():
     pass # TODO
 
+# setup logging
+file_handler = RotatingFileHandler('serviceapi.log', maxBytes=1024 * 1024 *10, backupCount=7)
+file_handler.setLevel(logging.DEBUG)
+log_formatter = logging.Formatter("%(asctime)s - %(name)s:%(lineno)s - %(levelname)s - %(message)s")
+file_handler.setFormatter(log_formatter)
+app.logger.addHandler(file_handler)
+
+app.logger.info("Advice api main started.")
+
 # Main entry:...
 if __name__ == '__main__':
-    file_handler = RotatingFileHandler('serviceapi.log', maxBytes=1024 * 1024 *10, backupCount=7)
-    file_handler.setLevel(logging.DEBUG)
-    log_formatter = logging.Formatter("%(asctime)s - %(name)s:%(lineno)s - %(levelname)s - %(message)s")
-    file_handler.setFormatter(log_formatter)
-    app.logger.addHandler(file_handler)
-
-    app.logger.info("Advice api main started.")
-
     #app.debug = True
     port = int(os.getenv('PORT', 5000))
     # default flask setup... hangs once in a while
