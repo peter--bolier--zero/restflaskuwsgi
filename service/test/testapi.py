@@ -1,23 +1,23 @@
 import requests
 
-host = "10.249.119.63"
-
+host = "https://10.249.119.63"
+#host = "https://advisor-skeleton.mybluemix.net/"
 
 print("\n------")    
 print("home")
-r = requests.get("http://"+host+":5000/")
+r = requests.get(host+":5000/")
 print("result %s " % (r.content))
 
 print("\n------")    
 print("illegal resource")
 payload = {"type": 0}
-r = requests.put("http://"+host+":5000/api/", json = payload)
+r = requests.put(host+":5000/api/", json = payload)
 print("result %s " % (r.content))
 
 print("\n------")    
 print("illegal type")
 payload = {"type": 1}
-r = requests.put("http://"+host+":5000/api/V0.2/trip/start", json = payload)
+r = requests.put(host+":5000/api/V0.2/trip/start", json = payload)
 print("result %s " % (r.content))
 
     
@@ -26,7 +26,7 @@ print("result %s " % (r.content))
 print("\n------")    
 print("Test 0")
 payload = {"type": 0}
-r = requests.put("http://"+host+":5000/api/V0.2/trip/start", json = payload)
+r = requests.put(host+":5000/api/V0.2/trip/start", json = payload)
 print("result %s " % (r.content))
 
 
@@ -35,7 +35,7 @@ print("result %s " % (r.content))
 print("\n------")    
 print("Test 1")
 payload = {"type": 1,"data": {"time": 1497346079, "data": [{"id": 213,"value": 100.0}, {"id": 191,"value": 13.269914626196}, {"id": 2015,"value": 8.0}, {"id": 2018,"value": 51.5626308108108}, {"id": 2019,"value": 5.00934432432432}, {"id": 276, "value": 1234}]}}
-r = requests.put("http://"+host+":5000/api/V0.1/trip/advice/speed", json = payload)
+r = requests.put(host+":5000/api/V0.1/trip/advice/speed", json = payload)
 print("result %s " % (r.content))
 
 # 2
@@ -43,7 +43,7 @@ print("result %s " % (r.content))
 print("\n------")    
 print("Test 2")
 payload = {"type": 2}
-r = requests.put("http://"+host+":5000/api/V0.1/trip/advice/park", json = payload)
+r = requests.put(host+":5000/api/V0.1/trip/advice/park", json = payload)
 print("result %s " % (r.content))
 
 
@@ -52,5 +52,5 @@ print("result %s " % (r.content))
 print("\n------")    
 print("Test 3")
 payload = {"type": 3}
-r = requests.put("http://"+host+":5000/api/V0.1/trip/advice/charge", json = payload)
+r = requests.put(host+":5000/api/V0.1/trip/advice/charge", json = payload)
 print("result %s " % (r.content))
