@@ -143,23 +143,16 @@ def shutdown():
 
 # Main entry:...
 if __name__ == '__main__':
-    handler = RotatingFileHandler('solarservice.log', maxBytes=10000, backupCount=1)
-    handler.setLevel(logging.DEBUG)
-    #handler.setFormatter(fmt='%(asctime)-15s %(clientip)s %(user)-8s %(message)s')
-    app.logger.addHandler(handler)
+    file_handler = RotatingFileHandler('serviceapi.log', maxBytes=1024 * 1024 *10, backupCount=7)
+    file_handler.setLevel(logging.DEBUG)
+    log_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    file_handler.setFormatter(log_formatter)
+    app.logger.addHandler(file_handler)
 
     # default flask setup... hangs once in a while
     #app.run(host='0.0.0.0', port=port, use_debugger=False, debug=True)
 
-    #app.debug = True
-    handler = RotatingFileHandler('/var/log/solarservice.log', maxBytes=10000, backupCount=5)
-    handler.setLevel(logging.DEBUG)
-    #handler.setFormatter(fmt='%(asctime)-15s %(clientip)s %(user)-8s %(message)s')
-    app.logger.addHandler(handler)
-    app.logger.addHandler(logging.StreamHandler()) # for logging in container mmm.
-
-    # default flask setup... hangs once in a while
-    #app.run(host='0.0.0.0', port=port, use_debugger=False, debug=True)
+    app.logger.info("Advice api main started.")
 
     #app.debug = True
     port = int(os.getenv('PORT', 5000))

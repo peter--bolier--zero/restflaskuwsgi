@@ -1,2 +1,4 @@
-Flask>=0.12
-uWSGI>=2.0.14
+cf_deployment_tracker>=1.0.4
+flask>=0.12
+flask-restful>=0.3.5
+uwsgi>=2.0.14
