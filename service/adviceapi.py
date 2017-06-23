@@ -145,15 +145,13 @@ def shutdown():
 if __name__ == '__main__':
     file_handler = RotatingFileHandler('serviceapi.log', maxBytes=1024 * 1024 *10, backupCount=7)
     file_handler.setLevel(logging.DEBUG)
-    log_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    log_formatter = logging.Formatter("%(asctime)s - %(name)s:%(lineno)s - %(levelname)s - %(message)s")
     file_handler.setFormatter(log_formatter)
     app.logger.addHandler(file_handler)
-
-    # default flask setup... hangs once in a while
-    #app.run(host='0.0.0.0', port=port, use_debugger=False, debug=True)
 
     app.logger.info("Advice api main started.")
 
     #app.debug = True
     port = int(os.getenv('PORT', 5000))
-    app.run(port=port, use_debugger=False, debug=False)
+    # default flask setup... hangs once in a while
+    app.run(host='0.0.0.0', port=port, use_debugger=False, debug=False)
